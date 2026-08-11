@@ -121,5 +121,9 @@
   "settingsDeleteLocalData": "Alle lokalen Daten löschen",
   "settingsDeleteLocalDataBody": "Favoriten, Tasbih-Statistiken, täglicher Wird-Fortschritt und alle auf diesem Gerät gespeicherten Einstellungen werden gelöscht. Dies kann nicht rückgängig gemacht werden.",
   "settingsLocalDataDeleted": "Alle lokalen Daten wurden gelöscht",
-  "settingsPreviewFailed": "Vorschau konnte nicht abgespielt werden — Verbindung prüfen"
+  "settingsPreviewFailed": "Vorschau konnte nicht abgespielt werden — Verbindung prüfen",
+  "quranTranslationUnavailable": "Übersetzung für diesen Vers nicht verfügbar",
+  "quranTranslationLoadFailed": "Übersetzung konnte nicht geladen werden",
+  "quranTranslationRetry": "Erneut versuchen",
+  "quranTranslationSourceNote": "Übersetzung von QuranEnc.com"
 }

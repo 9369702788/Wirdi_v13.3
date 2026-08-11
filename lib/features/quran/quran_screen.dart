@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '../../core/data/bismillah.dart';
 import '../../core/data/juz_data.dart';
 import '../../core/data/reciters.dart';
+import '../../core/data/app_sources.dart';
 import '../../core/models/quran_models.dart';
 import '../../core/services/app_logger.dart';
 import '../../core/services/arabic_text_utils.dart';
@@ -13,11 +14,13 @@ import '../../core/services/audio_download_service.dart';
 import '../../core/services/mushaf_repository.dart';
 import '../../core/services/quran_audio_service.dart';
 import '../../core/services/quran_repository.dart';
+import '../../core/services/quran_translation_repository.dart';
 import '../../core/services/settings_service.dart';
 import '../../core/services/tafsir_repository.dart';
 import '../../core/services/transliteration_repository.dart';
 import '../../core/services/user_progress_service.dart';
 import '../../core/theme/app_theme.dart';
+import '../../l10n/generated/app_localizations.dart';
 import '../mushaf/mushaf_view_screen.dart';
 
 class QuranScreen extends StatefulWidget {
@@ -471,6 +474,16 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
   Map<String, String>? _transliterationData;
   bool _loadingTransliteration = false;
 
+  // Verse-by-verse meaning translation (QuranEnc.com), in the app's
+  // active UI language. Unlike transliteration (an optional pronunciation
+  // aid, gated behind a settings toggle), the translation is shown
+  // automatically whenever the UI language isn't Arabic — someone
+  // reading the app in German or Turkish needs the meaning, not just a
+  // toggle they might not know to flip.
+  Map<int, String>? _translationData;
+  bool _loadingTranslation = false;
+  String? _translationLoadError;
+
   int? _lastKnownPlayingAyah;
 
   // Playback lives in the app-wide QuranAudioService (not owned by this
@@ -505,8 +518,33 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
       _loadTransliteration();
     }
 
+    final languageCode = Localizations.localeOf(context).languageCode;
+    final translationKey = AppSources.quranEncTranslationKeyFor(languageCode);
+    if (translationKey != null) {
+      _loadTranslation(translationKey);
+    }
+
     if (widget.scrollToAyah != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToAyah(widget.scrollToAyah!));
+    }
+  }
+
+  Future<void> _loadTranslation(String translationKey) async {
+    setState(() {
+      _loadingTranslation = true;
+      _translationLoadError = null;
+    });
+    try {
+      final data = await QuranTranslationRepository.loadSurah(
+        translationKey: translationKey,
+        surahNumber: widget.surah.number,
+      );
+      if (mounted) setState(() => _translationData = data);
+    } catch (e, st) {
+      AppLogger.error('Failed to load Quran translation', error: e, stackTrace: st);
+      if (mounted) setState(() => _translationLoadError = translationKey);
+    } finally {
+      if (mounted) setState(() => _loadingTranslation = false);
     }
   }
 
@@ -544,6 +582,44 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
     quranAudio.removeListener(_onAudioChanged);
     _scrollController.dispose();
     super.dispose();
+  }
+
+  String? _translationKeyForLocale(BuildContext context) =>
+      AppSources.quranEncTranslationKeyFor(Localizations.localeOf(context).languageCode);
+
+  Widget _buildTranslationBlock(BuildContext context, int ayahNumber) {
+    final l10n = AppLocalizations.of(context);
+
+    if (_loadingTranslation && _translationData == null) {
+      return const Padding(
+        padding: EdgeInsets.only(top: 2),
+        child: SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
+      );
+    }
+
+    if (_translationLoadError != null && _translationData == null) {
+      return Row(
+        children: [
+          Expanded(
+            child: Text(
+              l10n.quranTranslationLoadFailed,
+              style: const TextStyle(fontSize: 13, color: AppColors.mutedText),
+            ),
+          ),
+          TextButton(
+            onPressed: () => _loadTranslation(_translationLoadError!),
+            child: Text(l10n.quranTranslationRetry, style: const TextStyle(fontSize: 13)),
+          ),
+        ],
+      );
+    }
+
+    final text = QuranTranslationRepository.translationFor(_translationData, ayahNumber);
+    return Text(
+      text ?? l10n.quranTranslationUnavailable,
+      textAlign: TextAlign.start,
+      style: const TextStyle(fontSize: 15, height: 1.5),
+    );
   }
 
   Future<void> _loadFavorites() async {
@@ -873,6 +949,10 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
                         textAlign: TextAlign.left,
                         style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: AppColors.mutedText),
                       ),
+                  ],
+                  if (_translationKeyForLocale(context) != null) ...[
+                    const SizedBox(height: 8),
+                    _buildTranslationBlock(context, ayah.number),
                   ],
                   if (isTafsirExpanded) ...[
                     const SizedBox(height: 10),

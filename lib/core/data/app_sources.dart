@@ -27,6 +27,29 @@ class AppSources {
   static const String mushafPagesJsonUrl =
       'https://raw.githubusercontent.com/hamzakat/madani-muhsaf-json/main/madani-muhsaf.json';
 
+  /// QuranEnc.com (Encyclopedia of the Noble Quran / King Fahd Complex
+  /// affiliated project) — per-language meaning translations, fetched
+  /// per-surah. Free to use and redistribute per their terms, provided
+  /// the source is credited (see Sources & Licenses) and the text isn't
+  /// altered. https://quranenc.com/en/home/api
+  static const String quranEncApiBase = 'https://quranenc.com/api/v1/translation';
+
+  /// Maps this app's UI language to a specific QuranEnc.com translation
+  /// edition. Arabic has no entry: for the 'ar' locale the app shows the
+  /// Quran's own Arabic text directly, there's no separate "translation"
+  /// to fetch. Picking a specific edition per language (rather than just
+  /// "the English one") matters because QuranEnc hosts several editions
+  /// per language from different translators — these are the widely-used
+  /// default editions for each.
+  static const Map<String, String> quranEncTranslationKeyByLocale = {
+    'en': 'english_saheeh', // Saheeh International
+    'de': 'german_bubenheim', // Frank Bubenheim & Nadeem Elyas
+    'tr': 'turkish_shahin', // Dr. Ali Özek and others (Diyanet-affiliated team)
+  };
+
+  static String? quranEncTranslationKeyFor(String languageCode) =>
+      quranEncTranslationKeyByLocale[languageCode];
+
   /// Adhan audio recordings, officially hosted by AlAdhan (the same
   /// provider already used for prayer times), listed at
   /// https://aladhan.com/download-adhans
@@ -98,6 +121,11 @@ https://aladhan.com/prayer-times-api
 عبر شبكة Islamic Network CDN
 https://alquran.cloud/cdn
 
+ترجمات معاني القرآن الكريم:
+عدة لغات (الإنجليزية، الألمانية، التركية)
+عبر Encyclopedia of the Noble Quran
+https://quranenc.com
+
 التفسير الميسر:
 مصدر بيانات JSON مفتوح على GitHub
 https://github.com/00AhmedMokhtar00/QuranTafseer-ar-json
@@ -148,6 +176,11 @@ Quran recitation:
 Multiple reciters (see the reciter list inside the reading screen)
 Served via the Islamic Network CDN
 https://alquran.cloud/cdn
+
+Quran meaning translations:
+Multiple languages (English, German, Turkish)
+Via the Encyclopedia of the Noble Quran
+https://quranenc.com
 
 Simplified Tafsir (Al-Muyassar):
 Open JSON dataset on GitHub
@@ -200,6 +233,11 @@ Mehrere Rezitatoren (siehe Rezitatorenliste im Leseansicht)
 Bereitgestellt über das Islamic Network CDN
 https://alquran.cloud/cdn
 
+Koran-Bedeutungsübersetzungen:
+Mehrere Sprachen (Englisch, Deutsch, Türkisch)
+Über die Encyclopedia of the Noble Quran
+https://quranenc.com
+
 Vereinfachter Tafsir (Al-Muyassar):
 Offener JSON-Datensatz auf GitHub
 https://github.com/00AhmedMokhtar00/QuranTafseer-ar-json
@@ -250,6 +288,11 @@ Kur'an tilaveti:
 Birden fazla kâri (kâri listesi okuma ekranında)
 Islamic Network CDN üzerinden sunulur
 https://alquran.cloud/cdn
+
+Kur'an meal çevirileri:
+Birden fazla dil (İngilizce, Almanca, Türkçe)
+Encyclopedia of the Noble Quran üzerinden
+https://quranenc.com
 
 Muyesser Tefsir:
 GitHub üzerinde açık JSON veri seti

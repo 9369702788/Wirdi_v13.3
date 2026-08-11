@@ -121,5 +121,9 @@
   "settingsDeleteLocalData": "حذف جميع البيانات المحلية",
   "settingsDeleteLocalDataBody": "سيتم حذف المفضلة وإحصاءات التسبيح وتقدم الورد اليومي وكل الإعدادات المحفوظة على هذا الجهاز. لا يمكن التراجع عن هذا الإجراء.",
   "settingsLocalDataDeleted": "تم حذف جميع البيانات المحلية",
-  "settingsPreviewFailed": "تعذر تشغيل المعاينة — تحقق من الاتصال"
+  "settingsPreviewFailed": "تعذر تشغيل المعاينة — تحقق من الاتصال",
+  "quranTranslationUnavailable": "الترجمة غير متوفرة لهذه الآية",
+  "quranTranslationLoadFailed": "تعذر تحميل الترجمة",
+  "quranTranslationRetry": "إعادة المحاولة",
+  "quranTranslationSourceNote": "الترجمة من QuranEnc.com"
 }

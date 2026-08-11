@@ -155,5 +155,9 @@
         "type": "String"
       }
     }
-  }
+  },
+  "quranTranslationUnavailable": "Translation unavailable for this verse",
+  "quranTranslationLoadFailed": "Couldn't load the translation",
+  "quranTranslationRetry": "Retry",
+  "quranTranslationSourceNote": "Translation from QuranEnc.com"
 }

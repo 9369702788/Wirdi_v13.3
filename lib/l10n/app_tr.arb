@@ -121,5 +121,9 @@
   "settingsDeleteLocalData": "Tüm yerel verileri sil",
   "settingsDeleteLocalDataBody": "Favoriler, tesbih istatistikleri, günlük vird ilerlemesi ve bu cihazda kayıtlı tüm ayarlar silinecektir. Bu işlem geri alınamaz.",
   "settingsLocalDataDeleted": "Tüm yerel veriler silindi",
-  "settingsPreviewFailed": "Önizleme oynatılamadı — bağlantınızı kontrol edin"
+  "settingsPreviewFailed": "Önizleme oynatılamadı — bağlantınızı kontrol edin",
+  "quranTranslationUnavailable": "Bu ayet için çeviri mevcut değil",
+  "quranTranslationLoadFailed": "Çeviri yüklenemedi",
+  "quranTranslationRetry": "Tekrar dene",
+  "quranTranslationSourceNote": "QuranEnc.com'dan çeviri"
 }
