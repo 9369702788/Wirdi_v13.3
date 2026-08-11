@@ -479,7 +479,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   /// (a sentinel Locale) since both map to `null` from Navigator.pop
   /// otherwise.
   Future<void> _showLanguageSheet(BuildContext context, AppLocalizations l10n) async {
-    const dismissedSentinel = Locale('_dismissed_');
     String nameFor(Locale locale) {
       switch (locale.languageCode) {
         case 'ar':
@@ -513,7 +512,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 groupValue: appSettings.explicitLocale == null,
                 activeColor: AppColors.primaryEmerald,
                 title: Text(l10n.settingsLanguageSystem),
-                onChanged: (_) => Navigator.pop(sheetContext, const Locale('')),
+                onChanged: (_) => Navigator.pop(sheetContext, const Locale('system')),
               ),
               for (final locale in AppSettings.supportedLocales)
                 RadioListTile<bool>(
@@ -531,7 +530,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
 
     if (choice == null) return; // sheet dismissed without a tap
-    if (choice.languageCode.isEmpty) {
+    if (choice.languageCode == 'system') {
       await appSettings.setLocale(null); // "System default"
     } else {
       await appSettings.setLocale(choice);
