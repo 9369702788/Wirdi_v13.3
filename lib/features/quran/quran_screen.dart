@@ -497,6 +497,8 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
 
   late final int _surahAyahOffset; // sum of ayah counts of all surahs before this one
 
+  bool _translationKickedOff = false;
+
   String _uid(int ayahNumber) => '${widget.surah.number}_$ayahNumber';
 
   @override
@@ -518,14 +520,27 @@ class _SurahReaderScreenState extends State<SurahReaderScreen> {
       _loadTransliteration();
     }
 
-    final languageCode = Localizations.localeOf(context).languageCode;
-    final translationKey = AppSources.quranEncTranslationKeyFor(languageCode);
-    if (translationKey != null) {
-      _loadTranslation(translationKey);
-    }
-
     if (widget.scrollToAyah != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToAyah(widget.scrollToAyah!));
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Localizations.localeOf(context) depends on an InheritedWidget, which
+    // isn't available yet during initState — it's only safe to read here
+    // (called right after initState, and again if the locale changes).
+    // Guarded to fire the initial load only once; a live locale switch
+    // while this screen is already open is an edge case we don't handle,
+    // same as the pre-existing transliteration load.
+    if (!_translationKickedOff) {
+      _translationKickedOff = true;
+      final languageCode = Localizations.localeOf(context).languageCode;
+      final translationKey = AppSources.quranEncTranslationKeyFor(languageCode);
+      if (translationKey != null) {
+        _loadTranslation(translationKey);
+      }
     }
   }
 
