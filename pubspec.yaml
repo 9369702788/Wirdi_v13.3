@@ -1,0 +1,48 @@
+name: wirdi
+description: "وردي — Islamic daily Quran, Azkar, Prayer & Tasbeeh companion."
+publish_to: 'none'
+version: 1.13.0+16
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  http: ^1.2.2
+  shared_preferences: ^2.3.3
+  intl: ^0.20.2
+  geolocator: ^13.0.2
+  audioplayers: ^6.1.0
+  url_launcher: ^6.3.1
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  # Amiri Quran — a font specifically designed for Quranic text with
+  # proper support for Uthmani script combining marks (dagger alef,
+  # madda, sukun variants) that generic system fonts often render
+  # incompletely. SIL Open Font License (see assets/fonts/AmiriQuran-OFL.txt),
+  # explicitly permits bundling in applications.
+  # Source: https://github.com/aliftype/amiri
+  fonts:
+    - family: AmiriQuran
+      fonts:
+        - asset: assets/fonts/AmiriQuran.ttf
+
+  assets:
+    - assets/fonts/

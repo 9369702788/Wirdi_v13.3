@@ -1,0 +1,159 @@
+{
+  "@@locale": "en",
+  "appTitle": "Wirdi",
+  "@appTitle": {
+    "description": "App name shown in title bar / task switcher"
+  },
+  "navHome": "Home",
+  "navQuran": "Quran",
+  "navAzkar": "Azkar",
+  "navPrayer": "Prayer",
+  "navTasbeeh": "Tasbeeh",
+  "navMore": "More",
+  "commonCancel": "Cancel",
+  "commonSave": "Save",
+  "commonDelete": "Delete",
+  "commonClose": "Close",
+  "commonOk": "OK",
+  "commonBack": "Back",
+  "commonNext": "Next",
+  "commonSkip": "Skip",
+  "commonDone": "Done",
+  "commonRetry": "Retry",
+  "commonShare": "Share",
+  "commonSearch": "Search",
+  "commonEdit": "Edit",
+  "commonConfirm": "Confirm",
+  "commonLoading": "Loading…",
+  "commonError": "Something went wrong",
+  "commonYes": "Yes",
+  "commonNo": "No",
+  "languageName_ar": "Arabic",
+  "languageName_en": "English",
+  "languageName_de": "German",
+  "languageName_tr": "Turkish",
+  "settingsLanguage": "Language",
+  "settingsLanguageSystem": "System default",
+  "settingsLanguageSubtitle": "Choose the app's display language",
+  "asmaUlHusnaTitle": "The 99 Names of Allah",
+  "sourcesLicensesTitle": "Sources & Licenses",
+  "sourcesOssLicensesButton": "Open-source package licenses",
+  "aboutTitle": "About",
+  "aboutTagline": "Your daily companion for dhikr and Quran",
+  "aboutVersion": "Version 1.0.0",
+  "aboutBody": "Wirdi is a daily Islamic companion app that helps you keep up with Quran reading, your azkar, prayer times, and tasbeeh, all in one calm, simple design. The app has no ads or tracking, and all your data stays on your device.",
+  "onboardingSkip": "Skip",
+  "onboardingSlide1": "Make the Quran part of your day",
+  "onboardingSlide2": "Track your daily wird and build a habit",
+  "onboardingSlide3": "Remind your heart before time reminds you",
+  "onboardingStart": "Start your journey",
+  "onboardingNext": "Next",
+  "privacyPolicyTitle": "Privacy Policy",
+  "favoritesTitle": "Favorites",
+  "favoritesTabAyahs": "Quran Verses",
+  "favoritesTabAzkar": "Azkar",
+  "favoritesLoadError": "Couldn't load favorites",
+  "favoritesEmptyAyahs": "No favorite verses yet",
+  "favoritesEmptyAzkar": "No favorite azkar yet",
+  "favoritesAyahSubtitle": "Surah {surahName} - Ayah {ayahNumber}",
+  "@favoritesAyahSubtitle": {
+    "placeholders": {
+      "surahName": {
+        "type": "String"
+      },
+      "ayahNumber": {
+        "type": "int"
+      }
+    }
+  },
+  "zakatTitle": "Zakat Calculator",
+  "zakatNisabHint": "Enter today's nisab value (at the current market price of gold or silver) before calculating, since the nisab price changes daily and can't be hardcoded in the app. You can check with your local fatwa authority or look up the current gold price (85 grams of gold, or its equivalent in silver).",
+  "zakatCurrentNisab": "Current nisab value",
+  "zakatableAssets": "Zakatable assets",
+  "zakatCash": "Cash and equivalents (bank, wallet)",
+  "zakatGoldSilver": "Gold and silver (market value)",
+  "zakatInvestments": "Investments and stocks",
+  "zakatBusiness": "Trade goods (merchandise for sale)",
+  "zakatReceivables": "Debts owed to you (expected to be recovered)",
+  "zakatOwedDebts": "Debts you owe",
+  "zakatCurrentDebts": "Debts and bills currently owed by you",
+  "zakatNetWealth": "Net zakatable wealth",
+  "zakatEnterNisabFirst": "Enter the nisab value first",
+  "zakatBelowNisab": "Your wealth is below nisab — no zakat is due",
+  "zakatDue": "Zakat due (2.5%)",
+  "zakatFootnote": "Note: this calculator gives a general estimate at the standard rate (2.5%) on wealth that has been held for a full lunar year and reached nisab. Zakat on crops, livestock, and minerals follows different rules not covered here. For specific situations, it's best to ask a qualified scholar.",
+  "settingsTitle": "Settings",
+  "settingsAppearance": "Appearance",
+  "settingsMode": "Mode",
+  "settingsModeLight": "Light",
+  "settingsModeDark": "Dark",
+  "settingsModeAuto": "Automatic",
+  "settingsFontSize": "Font size",
+  "settingsFontPreview": "Sample text to preview font size",
+  "settingsShowTransliteration": "Show Latin transliteration",
+  "settingsShowTransliterationSubtitle": "Helpful for those learning to read — appears under every verse",
+  "settingsPrayerReminder": "Prayer Reminder",
+  "settingsPrayerReminderEnable": "Enable upcoming prayer reminder",
+  "settingsPrayerReminderSubtitle": "The reminder only works while the app is open",
+  "settingsPrayerReminderMinutesBefore": "Remind before prayer by (minutes)",
+  "settingsPrayerReminderMinutesLabel": "{minutes} min",
+  "settingsPrayerReminderMethod": "Reminder method",
+  "settingsReminderBanner": "Notification only",
+  "settingsReminderBeep": "Alert tone",
+  "settingsReminderAdhan": "Full adhan",
+  "settingsTestTone": "Test tone",
+  "settingsAdhanSound": "Adhan sound",
+  "settingsStopPreview": "Stop preview",
+  "settingsListen": "Listen",
+  "settingsReminderNote": "Note: this reminder only works while the Prayer Times screen or app is open. True background notifications need a separate system notification service, which is planned for an upcoming release.",
+  "settingsDailyWird": "Daily Wird",
+  "settingsDailyWirdTarget": "Daily target (pages/surahs)",
+  "settingsDailyWirdPerDay": "{count} per day",
+  "settingsAboutSupport": "About & Support",
+  "settingsAbout": "About",
+  "settingsSourcesLicenses": "Sources & Licenses",
+  "settingsPrivacyPolicy": "Privacy Policy",
+  "settingsDataManagement": "Data Management",
+  "settingsQuranLastUpdate": "Quran last updated",
+  "settingsAzkarLastUpdate": "Azkar last updated",
+  "settingsNotDownloadedYet": "Not downloaded yet",
+  "settingsUpdateNow": "Update data now",
+  "settingsRequiresInternet": "Requires an internet connection",
+  "settingsDataUpdated": "Quran and azkar data updated",
+  "settingsDownloadedAudio": "Downloaded recitations for offline listening",
+  "settingsNoDownloadedAudio": "No downloaded recitations",
+  "settingsMbDownloaded": "{size} MB downloaded",
+  "settingsDeleteAll": "Delete all",
+  "settingsDeleteAllDownloadsTitle": "Delete all downloaded recitations",
+  "settingsDeleteAllDownloadsBody": "All downloaded audio files for every surah will be deleted. Listening will fall back to online streaming.",
+  "settingsResetKhatma": "Reset Khatma progress",
+  "settingsResetKhatmaSubtitle": "Start a fresh Khatma from scratch",
+  "settingsResetKhatmaBody": "Every surah will be marked unread again to start a new Khatma. Your daily wird and favorites won't be affected.",
+  "settingsResetKhatmaConfirm": "Reset",
+  "settingsKhatmaResetDone": "A new Khatma has started, good luck! 🌿",
+  "settingsDeleteLocalData": "Delete all local data",
+  "settingsDeleteLocalDataBody": "Favorites, tasbeeh stats, daily wird progress, and all settings saved on this device will be deleted. This cannot be undone.",
+  "settingsLocalDataDeleted": "All local data has been deleted",
+  "settingsPreviewFailed": "Couldn't play the preview — check your connection",
+  "@settingsPrayerReminderMinutesLabel": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@settingsDailyWirdPerDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@settingsMbDownloaded": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  }
+}
